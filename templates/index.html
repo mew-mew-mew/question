@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSE375 Track 1: 脚手架安全理论测验</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            padding: 15px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .header h1 { font-size: 20px; color: #0056b3; margin-top: 0; }
+        .header p { font-size: 14px; color: #666; margin: 5px 0 0 0; }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            border-bottom: 2px solid #0056b3;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .question-card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .question-text {
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+        .en-text {
+            font-size: 13px;
+            color: #777;
+            font-weight: normal;
+            display: block;
+            margin-top: 4px;
+        }
+        
+        .options label {
+            display: block;
+            margin-bottom: 8px;
+            padding: 8px;
+            background: #f9f9f9;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid #eee;
+        }
+        .options label:hover { background: #eef5ff; }
+        .options input[type="radio"] { margin-right: 10px; }
+        
+        textarea, input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+        
+        .submit-btn {
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            width: 100%;
+            cursor: pointer;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0,86,179,0.3);
+        }
+        .submit-btn:hover { background-color: #004494; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>CSE375 Track 1: <br>Scaffold Safety Knowledge Quiz<br>脚手架安全理论测验</h1>
+        <p>Time Limit (限时): 15 Minutes</p>
+        <p>Total Score (总分): 100 Points</p>
+    </div>
+
+    <form action="/submit" method="POST">
+        
+        <div class="question-card">
+            <label class="question-text">Worker Name / 姓名 (必填):</label>
+            <input type="text" name="worker_name" required placeholder="请输入您的姓名">
+        </div>
+
+        <div class="section-title">Section A: Multiple Choice (单选题)</div>
+
+        <div class="question-card">
+            <div class="question-text">
+                1. 根据法定规例，在正常情况下，脚手架必须多久由“合资格人员”检查一次？
+                <span class="en-text">According to statutory regulations, how often must a scaffold be inspected by a "Competent Person" under normal conditions?</span>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q1" value="A" required> A) 至少每 7 天一次 (At least once every 7 days)</label>
+                <label><input type="radio" name="q1" value="B"> B) 至少每 14 天一次 (At least once every 14 days)</label>
+                <label><input type="radio" name="q1" value="C"> C) 至少每 30 天一次 (At least once every 30 days)</label>
+                <label><input type="radio" name="q1" value="D"> D) 每个工作班次开始前 (Before every single work shift)</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-text">
+                2. 合资格人员在完成脚手架检查后，必须签署并展示哪份法定表格？
+                <span class="en-text">Which statutory form must be signed and displayed by the Competent Person after a successful scaffold inspection?</span>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q2" value="A" required> A) 表格 3A (Form 3A)</label>
+                <label><input type="radio" name="q2" value="B"> B) 表格 11 (Form 11)</label>
+                <label><input type="radio" name="q2" value="C"> C) 表格 38B (Form 38B)</label>
+                <label><input type="radio" name="q2" value="D"> D) 表格 5 (Form 5)</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-text">
+                3. 除了定期检查外，在什么情况下必须立即对脚手架进行重新检查？
+                <span class="en-text">Besides the regular scheduled intervals, under what circumstances MUST a scaffold be immediately re-inspected?</span>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q3" value="A" required> A) 公众假期之后 (After a public holiday)</label>
+                <label><input type="radio" name="q3" value="B"> B) 每次雇用新的分包商时 (Whenever a new subcontractor is hired)</label>
+                <label><input type="radio" name="q3" value="C"> C) 在暴露于可能影响其强度的恶劣天气（如台风）之后 (After exposure to weather conditions likely to have affected its strength, such as a typhoon)</label>
+                <label><input type="radio" name="q3" value="D"> D) 在开始拆卸之前 (Before dismantling begins)</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-text">
+                4. 在搭建或拆卸脚手架时，搭棚工必须将全身式安全带的挂绳锚固在哪里？
+                <span class="en-text">When erecting or dismantling a scaffold, where MUST a scaffolder anchor the lanyard of their full-body safety harness?</span>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q4" value="A" required> A) 正在搭建的脚手架的牢固部分 (A secure part of the scaffold being erected)</label>
+                <label><input type="radio" name="q4" value="B"> B) 独立救生绳 (An independent lifeline)</label>
+                <label><input type="radio" name="q4" value="C"> C) 直径至少为 50 毫米的主竹竿 (A main bamboo pole with at least 50mm diameter)</label>
+                <label><input type="radio" name="q4" value="D"> D) 脚手架的交叉支撑 (The cross bracing of the scaffold)</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-text">
+                5. 在脚手架工作平台上安装踢脚板的主要目的是什么？
+                <span class="en-text">What is the primary purpose of toe-boards installed on a scaffold working platform?</span>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q5" value="A" required> A) 防止工人滑倒 (To prevent workers from slipping)</label>
+                <label><input type="radio" name="q5" value="B"> B) 加固平台的结构刚度 (To reinforce the platform's structural rigidity)</label>
+                <label><input type="radio" name="q5" value="C"> C) 防止工具、碎屑和物料从边缘坠落 (To prevent tools, debris, and materials from falling off the edge)</label>
+                <label><input type="radio" name="q5" value="D"> D) 为工人提供垫脚的地方 (To provide a resting place for workers' feet)</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-text">
+                6. 以下哪项是承重竹竿被严格要求报废的标准？
+                <span class="en-text">Which of the following is a strict condemnation criterion for a bamboo pole intended for structural use?</span>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q6" value="A" required> A) 使用超过 6 个月 (It is older than 6 months)</label>
+                <label><input type="radio" name="q6" value="B"> B) 出现深长的纵向裂纹 (It exhibits a deep longitudinal crack)</label>
+                <label><input type="radio" name="q6" value="C"> C) 曾经淋过雨 (It has been exposed to rain)</label>
+                <label><input type="radio" name="q6" value="D"> D) 在两个以上的工地使用过 (It has been used on more than two construction sites)</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-text">
+                7. 根据标准行业惯例，应使用什么材料来绑扎和固定竹脚手架？
+                <span class="en-text">According to standard industry practice, what material should be used for tying and securing bamboo scaffolds?</span>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q7" value="A" required> A) 钢丝 (Steel wire)</label>
+                <label><input type="radio" name="q7" value="B"> B) 尼龙篾条/尼龙带 (Nylon strips/slings)</label>
+                <label><input type="radio" name="q7" value="C"> C) 棉绳 (Cotton rope)</label>
+                <label><input type="radio" name="q7" value="D"> D) 塑料扎带 (Plastic zip ties)</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-text">
+                8. 在金属管件脚手架系统中，交叉支撑的关键作用是什么？
+                <span class="en-text">In a metal tubular scaffold system, what is the critical function of cross bracing?</span>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q8" value="A" required> A) 为安全带提供安全的锚固点 (To provide a safe anchor point for safety harnesses)</label>
+                <label><input type="radio" name="q8" value="B"> B) 使脚手架结构看起来均匀整洁 (To make the scaffold structure look uniform and neat)</label>
+                <label><input type="radio" name="q8" value="C"> C) 防止脚手架结构摇晃并确保整体刚度 (To prevent the scaffold structure from swaying and ensure overall rigidity)</label>
+                <label><input type="radio" name="q8" value="D"> D) 牢固地固定踢脚板 (To hold the toe-boards securely in place)</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-text">
+                9. 当金属脚手架搭建在不平整或松软的地面上时，底座或可调底托下方必须放置什么？
+                <span class="en-text">What must be placed under the base plates or adjustable jacks of a metal scaffold when erected on uneven or soft ground?</span>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q9" value="A" required> A) 防止滑动的纸板 (Cardboard to prevent slipping)</label>
+                <label><input type="radio" name="q9" value="B"> B) 用于均匀分布重载的垫板/木块 (Sole boards to evenly distribute the heavy load)</label>
+                <label><input type="radio" name="q9" value="C"> C) 防滑橡胶垫 (Anti-slip rubber mats)</label>
+                <label><input type="radio" name="q9" value="D"> D) 用于排水的松散砾石 (Loose gravel for drainage)</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-text">
+                10. 一线安全主管如何准确核查特定脚手架平台的安全工作载荷/SWL？
+                <span class="en-text">How can a frontline safety supervisor accurately verify the Safe Working Load (SWL) of a specific scaffold platform?</span>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q10" value="A" required> A) 询问目前正在使用平台的工人 (By asking the workers currently using the platform)</label>
+                <label><input type="radio" name="q10" value="B"> B) 用重型建筑材料进行物理测试 (By physically testing it with heavy construction materials)</label>
+                <label><input type="radio" name="q10" value="C"> C) 查阅脚手架登记册、批准的设计图纸以及展示的警告告示 (By checking the scaffold register, approved design drawings, and displayed warning notices)</label>
+                <label><input type="radio" name="q10" value="D"> D) 根据脚手架组件的视觉厚度进行估算 (By estimating based on the visual thickness of the scaffold members)</label>
+            </div>
+        </div>
+
+        <div class="section-title">Section B: Short Answer (简答题)</div>
+
+        <div class="question-card">
+            <div class="question-text">
+                11. 简述在劳工处指引下，脚手架检查的“合资格人员”需要具备什么条件？
+                <span class="en-text">Briefly define the qualifications of a "Competent Person" for scaffold inspection under the Labour Department guidelines.</span>
+            </div>
+            <textarea name="q11" rows="3" placeholder="请输入您的答案..."></textarea>
+        </div>
+
+        <div class="question-card">
+            <div class="question-text">
+                12. 解释为什么法律要求高空作业的搭棚工必须使用全身式安全带，而不是简单的安全腰带。
+                <span class="en-text">Explain why a full-body harness is legally required for scaffolders working at height, as opposed to a simple safety belt.</span>
+            </div>
+            <textarea name="q12" rows="4" placeholder="请输入您的答案..."></textarea>
+        </div>
+
+        <div class="question-card">
+            <div class="question-text">
+                13. 什么是竹脚手架中的“连墙件/拉潃”？为什么它们在结构上至关重要？
+                <span class="en-text">What are "tie-backs" in bamboo scaffolding, and why are they structurally critical?</span>
+            </div>
+            <textarea name="q13" rows="3" placeholder="请输入您的答案..."></textarea>
+        </div>
+
+        <div class="question-card">
+            <div class="question-text">
+                14. 在对金属脚手架进行目视检查时，列出两个表明金属扣件应报废并停止使用的视觉迹象。
+                <span class="en-text">During a visual inspection of a metal scaffold, list two visible signs that indicate a metal coupler should be condemned and removed from service.</span>
+            </div>
+            <textarea name="q14" rows="3" placeholder="请输入您的答案..."></textarea>
+        </div>
+
+        <div class="question-card">
+            <div class="question-text">
+                15. 作为一线主管，如果您发现工人将一大堆沉重的混凝土砖块堆放在标准的“通道脚手架平台”上，您应立即采取什么行动？为什么？
+                <span class="en-text">If you, as a frontline supervisor, spot workers stacking a large pile of heavy concrete bricks on a standard "access scaffold platform", what immediate action should you take and why?</span>
+            </div>
+            <textarea name="q15" rows="4" placeholder="请输入您的答案..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Quiz (提交试卷)</button>
+    </form>
+
+</body>
+</html>
