@@ -57,22 +57,24 @@
         .options label {
             display: block;
             margin-bottom: 8px;
-            padding: 8px;
+            padding: 10px;
             background: #f9f9f9;
             border-radius: 4px;
             cursor: pointer;
             border: 1px solid #eee;
+            transition: background 0.2s;
         }
         .options label:hover { background: #eef5ff; }
-        .options input[type="radio"] { margin-right: 10px; }
+        .options input[type="radio"] { margin-right: 10px; transform: scale(1.2); }
         
-        textarea, input[type="text"] {
+        input[type="text"] {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
             font-family: inherit;
+            font-size: 16px;
         }
         
         .submit-btn {
@@ -102,12 +104,12 @@
 
     <form action="/submit" method="POST">
         
-        <div class="question-card">
+        <div class="question-card" style="border-left: 4px solid #0056b3;">
             <label class="question-text">Worker Name / 姓名 (必填):</label>
             <input type="text" name="worker_name" required placeholder="请输入您的姓名">
         </div>
 
-        <div class="section-title">Section A: Multiple Choice (单选题)</div>
+        <div class="section-title">15道单项选择题 (Multiple Choice Questions)</div>
 
         <div class="question-card">
             <div class="question-text">
@@ -142,8 +144,8 @@
             </div>
             <div class="options">
                 <label><input type="radio" name="q3" value="A" required> A) 公众假期之后 (After a public holiday)</label>
-                <label><input type="radio" name="q3" value="B"> B) 每次雇用新的分包商时 (Whenever a new subcontractor is hired)</label>
-                <label><input type="radio" name="q3" value="C"> C) 在暴露于可能影响其强度的恶劣天气（如台风）之后 (After exposure to weather conditions likely to have affected its strength, such as a typhoon)</label>
+                <label><input type="radio" name="q3" value="B"> B) 在暴露于可能影响其强度的恶劣天气，如台风之后 (After exposure to weather conditions likely to have affected its strength, such as a typhoon)</label>
+                <label><input type="radio" name="q3" value="C"> C) 每次雇用新的分包商时 (Whenever a new subcontractor is hired)</label>
                 <label><input type="radio" name="q3" value="D"> D) 在开始拆卸之前 (Before dismantling begins)</label>
             </div>
         </div>
@@ -155,9 +157,9 @@
             </div>
             <div class="options">
                 <label><input type="radio" name="q4" value="A" required> A) 正在搭建的脚手架的牢固部分 (A secure part of the scaffold being erected)</label>
-                <label><input type="radio" name="q4" value="B"> B) 独立救生绳 (An independent lifeline)</label>
-                <label><input type="radio" name="q4" value="C"> C) 直径至少为 50 毫米的主竹竿 (A main bamboo pole with at least 50mm diameter)</label>
-                <label><input type="radio" name="q4" value="D"> D) 脚手架的交叉支撑 (The cross bracing of the scaffold)</label>
+                <label><input type="radio" name="q4" value="B"> B) 脚手架的交叉支撑 (The cross bracing of the scaffold)</label>
+                <label><input type="radio" name="q4" value="C"> C) 独立救生绳 (An independent lifeline)</label>
+                <label><input type="radio" name="q4" value="D"> D) 直径至少为 50 毫米的主竹竿 (A main bamboo pole with at least 50mm diameter)</label>
             </div>
         </div>
 
@@ -168,8 +170,8 @@
             </div>
             <div class="options">
                 <label><input type="radio" name="q5" value="A" required> A) 防止工人滑倒 (To prevent workers from slipping)</label>
-                <label><input type="radio" name="q5" value="B"> B) 加固平台的结构刚度 (To reinforce the platform's structural rigidity)</label>
-                <label><input type="radio" name="q5" value="C"> C) 防止工具、碎屑和物料从边缘坠落 (To prevent tools, debris, and materials from falling off the edge)</label>
+                <label><input type="radio" name="q5" value="B"> B) 防止工具、碎屑和物料从边缘坠落 (To prevent tools, debris, and materials from falling off the edge)</label>
+                <label><input type="radio" name="q5" value="C"> C) 加固平台的结构刚度 (To reinforce the platform's structural rigidity)</label>
                 <label><input type="radio" name="q5" value="D"> D) 为工人提供垫脚的地方 (To provide a resting place for workers' feet)</label>
             </div>
         </div>
@@ -181,8 +183,8 @@
             </div>
             <div class="options">
                 <label><input type="radio" name="q6" value="A" required> A) 使用超过 6 个月 (It is older than 6 months)</label>
-                <label><input type="radio" name="q6" value="B"> B) 出现深长的纵向裂纹 (It exhibits a deep longitudinal crack)</label>
-                <label><input type="radio" name="q6" value="C"> C) 曾经淋过雨 (It has been exposed to rain)</label>
+                <label><input type="radio" name="q6" value="B"> B) 曾经淋过雨 (It has been exposed to rain)</label>
+                <label><input type="radio" name="q6" value="C"> C) 出现深长的纵向裂纹 (It exhibits a deep longitudinal crack)</label>
                 <label><input type="radio" name="q6" value="D"> D) 在两个以上的工地使用过 (It has been used on more than two construction sites)</label>
             </div>
         </div>
@@ -194,91 +196,114 @@
             </div>
             <div class="options">
                 <label><input type="radio" name="q7" value="A" required> A) 钢丝 (Steel wire)</label>
-                <label><input type="radio" name="q7" value="B"> B) 尼龙篾条/尼龙带 (Nylon strips/slings)</label>
-                <label><input type="radio" name="q7" value="C"> C) 棉绳 (Cotton rope)</label>
+                <label><input type="radio" name="q7" value="B"> B) 棉绳 (Cotton rope)</label>
+                <label><input type="radio" name="q7" value="C"> C) 尼龙篾条/尼龙带 (Nylon strips/slings)</label>
                 <label><input type="radio" name="q7" value="D"> D) 塑料扎带 (Plastic zip ties)</label>
             </div>
         </div>
 
         <div class="question-card">
             <div class="question-text">
-                8. 在金属管件脚手架系统中，交叉支撑的关键作用是什么？
+                8. 在竹脚手架中，“连墙件/拉潃”的主要结构功能是什么？
+                <span class="en-text">In bamboo scaffolding, what is the primary structural function of "tie-backs"?</span>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q8" value="A" required> A) 将脚手架固定在建筑物上，防止向外倒塌 (To secure the scaffold to the building and prevent outward collapse)</label>
+                <label><input type="radio" name="q8" value="B"> B) 将两根水平竹竿连接在一起 (To connect two horizontal bamboo poles together)</label>
+                <label><input type="radio" name="q8" value="C"> C) 为工人提供扶手 (To provide a handhold for workers)</label>
+                <label><input type="radio" name="q8" value="D"> D) 支撑工作平台跳板的重量 (To support the weight of the working platform planks)</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-text">
+                9. 在金属管件脚手架系统中，交叉支撑的关键作用是什么？
                 <span class="en-text">In a metal tubular scaffold system, what is the critical function of cross bracing?</span>
             </div>
             <div class="options">
-                <label><input type="radio" name="q8" value="A" required> A) 为安全带提供安全的锚固点 (To provide a safe anchor point for safety harnesses)</label>
-                <label><input type="radio" name="q8" value="B"> B) 使脚手架结构看起来均匀整洁 (To make the scaffold structure look uniform and neat)</label>
-                <label><input type="radio" name="q8" value="C"> C) 防止脚手架结构摇晃并确保整体刚度 (To prevent the scaffold structure from swaying and ensure overall rigidity)</label>
-                <label><input type="radio" name="q8" value="D"> D) 牢固地固定踢脚板 (To hold the toe-boards securely in place)</label>
+                <label><input type="radio" name="q9" value="A" required> A) 为安全带提供安全的锚固点 (To provide a safe anchor point for safety harnesses)</label>
+                <label><input type="radio" name="q9" value="B"> B) 防止脚手架结构摇晃并确保整体刚度 (To prevent the scaffold structure from swaying and ensure overall rigidity)</label>
+                <label><input type="radio" name="q9" value="C"> C) 使脚手架结构看起来均匀整洁 (To make the scaffold structure look uniform and neat)</label>
+                <label><input type="radio" name="q9" value="D"> D) 牢固地固定踢脚板 (To hold the toe-boards securely in place)</label>
             </div>
         </div>
 
         <div class="question-card">
             <div class="question-text">
-                9. 当金属脚手架搭建在不平整或松软的地面上时，底座或可调底托下方必须放置什么？
+                10. 当金属脚手架搭建在不平整或松软的地面上时，底座或可调底托下方必须放置什么？
                 <span class="en-text">What must be placed under the base plates or adjustable jacks of a metal scaffold when erected on uneven or soft ground?</span>
             </div>
             <div class="options">
-                <label><input type="radio" name="q9" value="A" required> A) 防止滑动的纸板 (Cardboard to prevent slipping)</label>
-                <label><input type="radio" name="q9" value="B"> B) 用于均匀分布重载的垫板/木块 (Sole boards to evenly distribute the heavy load)</label>
-                <label><input type="radio" name="q9" value="C"> C) 防滑橡胶垫 (Anti-slip rubber mats)</label>
-                <label><input type="radio" name="q9" value="D"> D) 用于排水的松散砾石 (Loose gravel for drainage)</label>
+                <label><input type="radio" name="q10" value="A" required> A) 防止滑动的纸板 (Cardboard to prevent slipping)</label>
+                <label><input type="radio" name="q10" value="B"> B) 用于均匀分布重载的垫板/木块 (Sole boards to evenly distribute the heavy load)</label>
+                <label><input type="radio" name="q10" value="C"> C) 防滑橡胶垫 (Anti-slip rubber mats)</label>
+                <label><input type="radio" name="q10" value="D"> D) 用于排水的松散砾石 (Loose gravel for drainage)</label>
             </div>
         </div>
 
         <div class="question-card">
             <div class="question-text">
-                10. 一线安全主管如何准确核查特定脚手架平台的安全工作载荷/SWL？
+                11. 在目视检查中，以下哪种情况表明金属扣件应被报废并停止使用？
+                <span class="en-text">During a visual inspection, which of the following indicates that a metal coupler should be CONDEMNED and removed from service?</span>
+            </div>
+            <div class="options">
+                <label><input type="radio" name="q11" value="A" required> A) 油漆颜色褪色 (The paint color has faded)</label>
+                <label><input type="radio" name="q11" value="B"> B) 螺栓滑丝或严重变形 (It has stripped threads on its bolts or is severely deformed)</label>
+                <label><input type="radio" name="q11" value="C"> C) 上面有泥土或水泥灰 (It has dirt or cement dust on it)</label>
+                <label><input type="radio" name="q11" value="D"> D) 使用超过 1 年 (It has been used for more than 1 year)</label>
+            </div>
+        </div>
+
+        <div class="question-card">
+            <div class="question-text">
+                12. 一线安全主管如何准确核查特定脚手架平台的安全工作载荷/SWL？
                 <span class="en-text">How can a frontline safety supervisor accurately verify the Safe Working Load (SWL) of a specific scaffold platform?</span>
             </div>
             <div class="options">
-                <label><input type="radio" name="q10" value="A" required> A) 询问目前正在使用平台的工人 (By asking the workers currently using the platform)</label>
-                <label><input type="radio" name="q10" value="B"> B) 用重型建筑材料进行物理测试 (By physically testing it with heavy construction materials)</label>
-                <label><input type="radio" name="q10" value="C"> C) 查阅脚手架登记册、批准的设计图纸以及展示的警告告示 (By checking the scaffold register, approved design drawings, and displayed warning notices)</label>
-                <label><input type="radio" name="q10" value="D"> D) 根据脚手架组件的视觉厚度进行估算 (By estimating based on the visual thickness of the scaffold members)</label>
+                <label><input type="radio" name="q12" value="A" required> A) 询问目前正在使用平台的工人 (By asking the workers currently using the platform)</label>
+                <label><input type="radio" name="q12" value="B"> B) 用重型建筑材料进行物理测试 (By physically testing it with heavy construction materials)</label>
+                <label><input type="radio" name="q12" value="C"> C) 根据脚手架组件的视觉厚度进行估算 (By estimating based on the visual thickness of the scaffold members)</label>
+                <label><input type="radio" name="q12" value="D"> D) 查阅脚手架登记册、批准的设计图纸以及展示的警告告示 (By checking the scaffold register, approved design drawings, and displayed warning notices)</label>
             </div>
-        </div>
-
-        <div class="section-title">Section B: Short Answer (简答题)</div>
-
-        <div class="question-card">
-            <div class="question-text">
-                11. 简述在劳工处指引下，脚手架检查的“合资格人员”需要具备什么条件？
-                <span class="en-text">Briefly define the qualifications of a "Competent Person" for scaffold inspection under the Labour Department guidelines.</span>
-            </div>
-            <textarea name="q11" rows="3" placeholder="请输入您的答案..."></textarea>
         </div>
 
         <div class="question-card">
             <div class="question-text">
-                12. 解释为什么法律要求高空作业的搭棚工必须使用全身式安全带，而不是简单的安全腰带。
-                <span class="en-text">Explain why a full-body harness is legally required for scaffolders working at height, as opposed to a simple safety belt.</span>
+                13. 关于脚手架工作平台上的跳板，安全要求是什么？
+                <span class="en-text">What is the safety requirement regarding the planks on a scaffold working platform?</span>
             </div>
-            <textarea name="q12" rows="4" placeholder="请输入您的答案..."></textarea>
+            <div class="options">
+                <label><input type="radio" name="q13" value="A" required> A) 可以有最大10厘米的空隙让碎屑掉落 (They can have gaps of up to 10 cm to allow debris to fall through)</label>
+                <label><input type="radio" name="q13" value="B"> B) 必须紧密铺设，防止物料和人员踩空坠落 (They must be closely boarded or planked to prevent materials and feet from falling through)</label>
+                <label><input type="radio" name="q13" value="C"> C) 只需固定一端以便于拆卸 (They should only be secured at one end for easy removal)</label>
+                <label><input type="radio" name="q13" value="D"> D) 必须涂成黄色以提高能见度 (They must be painted yellow for high visibility)</label>
+            </div>
         </div>
 
         <div class="question-card">
             <div class="question-text">
-                13. 什么是竹脚手架中的“连墙件/拉潃”？为什么它们在结构上至关重要？
-                <span class="en-text">What are "tie-backs" in bamboo scaffolding, and why are they structurally critical?</span>
+                14. 如果工人在脚手架上使用安全腰带代替全身式安全带进行防坠落保护，坠落时的主要危险是什么？
+                <span class="en-text">If a worker uses a safety belt instead of a full-body harness for fall protection on a scaffold, what is the primary danger in the event of a fall?</span>
             </div>
-            <textarea name="q13" rows="3" placeholder="请输入您的答案..."></textarea>
+            <div class="options">
+                <label><input type="radio" name="q14" value="A" required> A) 安全腰带更容易断裂 (The safety belt might snap more easily)</label>
+                <label><input type="radio" name="q14" value="B"> B) 集中在腰部的力量会导致严重的脊柱和内脏损伤 (The concentrated force on the waist can cause severe spinal and internal injuries)</label>
+                <label><input type="radio" name="q14" value="C"> C) 安全腰带太重，工人无法自由活动 (The safety belt is too heavy for the worker to move freely)</label>
+                <label><input type="radio" name="q14" value="D"> D) 安全腰带无法连接到独立救生绳 (The safety belt cannot be attached to an independent lifeline)</label>
+            </div>
         </div>
 
         <div class="question-card">
             <div class="question-text">
-                14. 在对金属脚手架进行目视检查时，列出两个表明金属扣件应报废并停止使用的视觉迹象。
-                <span class="en-text">During a visual inspection of a metal scaffold, list two visible signs that indicate a metal coupler should be condemned and removed from service.</span>
+                15. 作为主管，如果您观察到工人在未经适当授权的情况下修改或拆除脚手架结构的某一部分（例如拆除连墙件），您必须立即采取什么行动？
+                <span class="en-text">As a supervisor, what immediate action MUST you take if you observe workers modifying or removing part of a scaffold structure without proper authorization?</span>
             </div>
-            <textarea name="q14" rows="3" placeholder="请输入您的答案..."></textarea>
-        </div>
-
-        <div class="question-card">
-            <div class="question-text">
-                15. 作为一线主管，如果您发现工人将一大堆沉重的混凝土砖块堆放在标准的“通道脚手架平台”上，您应立即采取什么行动？为什么？
-                <span class="en-text">If you, as a frontline supervisor, spot workers stacking a large pile of heavy concrete bricks on a standard "access scaffold platform", what immediate action should you take and why?</span>
+            <div class="options">
+                <label><input type="radio" name="q15" value="A" required> A) 观望脚手架是否保持稳定 (Wait and see if the scaffold remains stable)</label>
+                <label><input type="radio" name="q15" value="B"> B) 在每周总结中报告 (Report it in your weekly summary)</label>
+                <label><input type="radio" name="q15" value="C"> C) 立即停止工作，疏散受影响区域，并向合资格人员/工程师报告 (Immediately stop the work, clear the affected area, and report to the Competent Person/Engineer)</label>
+                <label><input type="radio" name="q15" value="D"> D) 发出书面警告但允许工作继续 (Issue a written warning but allow the work to continue)</label>
             </div>
-            <textarea name="q15" rows="4" placeholder="请输入您的答案..."></textarea>
         </div>
 
         <button type="submit" class="submit-btn">Submit Quiz (提交试卷)</button>
