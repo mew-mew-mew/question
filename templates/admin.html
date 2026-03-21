@@ -8,6 +8,17 @@
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
         th { background-color: #f2f2f2; }
+        /* 删除按钮的样式 */
+        .delete-btn { 
+            color: white; 
+            background-color: #dc3545; 
+            padding: 6px 12px; 
+            text-decoration: none; 
+            border-radius: 4px; 
+            font-size: 14px;
+        }
+        .delete-btn:hover { background-color: #c82333; }
+        .time-col { color: #666; font-size: 14px; }
     </style>
 </head>
 <body>
@@ -15,17 +26,25 @@
     <table>
         <tr>
             <th>序号</th>
+            <th>提交时间</th>
             <th>姓名</th>
             <th>得分</th>
+            <th>答对题数</th>
+            <th>操作</th>
         </tr>
         {% for result in results %}
         <tr>
             <td>{{ loop.index }}</td>
+            <td class="time-col">{{ result.timestamp }}</td>
             <td>{{ result.name }}</td>
-            <td><b>{{ result.score }}</b></td>
+            <td style="color: #28a745;"><b>{{ result.score }}</b></td>
+            <td>{{ result.correct_count }}</td>
+            <td>
+                <a href="/delete/{{ result.id }}" class="delete-btn" onclick="return confirm('确定要删除【{{ result.name }}】的成绩吗？此操作不可恢复！');">删除</a>
+            </td>
         </tr>
         {% else %}
-        <tr><td colspan="3" style="text-align:center;">暂无人参加测试</td></tr>
+        <tr><td colspan="6" style="text-align:center; padding: 30px; color: #999;">暂无人参加测试</td></tr>
         {% endfor %}
     </table>
 </body>

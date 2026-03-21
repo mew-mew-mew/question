@@ -1,47 +1,73 @@
-from flask import Flask, render_template, request
+import json
+import os
+import uuid  # 用于给每条数据生成唯一ID
+from datetime import datetime  # 用于获取当前时间戳
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-# 临时数据库（存放在内存中）
-# 注意：在真实生产环境中，建议后续升级为 SQLite 或 MySQL
-results_db = []
+DATA_FILE = 'results_db.json'
 
-# 15道题的标准答案字典 (对应你题库的 Answer Key)
+if not os.path.exists(DATA_FILE):
+    with open(DATA_FILE, 'w', encoding='utf-8') as f:
+        json.dump([], f)
+
 ANSWER_KEY = {
     'q1': 'B', 'q2': 'C', 'q3': 'B', 'q4': 'C', 'q5': 'B',
     'q6': 'C', 'q7': 'C', 'q8': 'A', 'q9': 'B', 'q10': 'B',
     'q11': 'B', 'q12': 'D', 'q13': 'B', 'q14': 'B', 'q15': 'C'
 }
 
+def load_data():
+    with open(DATA_FILE, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+def save_data(data):
+    with open(DATA_FILE, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
+# ... (上面的代码不用动，保留引入 json, os, uuid, datetime 和 load_data, save_data 等)
+
 @app.route('/')
 def index():
-    # 返回手机端答题页面
     return render_template('index.html')
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    # 获取考生姓名
     name = request.form.get('worker_name')
     
-    # 判分逻辑
     correct_count = 0
     for q_id, correct_answer in ANSWER_KEY.items():
-        # 获取用户选择的答案
         user_answer = request.form.get(q_id)
         if user_answer == correct_answer:
             correct_count += 1
             
-    # 计算百分制得分 (答对题数 / 15 * 100)
     score = int((correct_count / 15) * 100)
+    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    record_id = str(uuid.uuid4())
     
-    # 将成绩保存到数据库
-    results_db.append({
+    current_data = load_data()
+    current_data.append({
+        'id': record_id,
+        'timestamp': current_time,
         'name': name, 
         'score': score,
         'correct_count': f"{correct_count}/15"
     })
+    save_data(current_data)
     
-    # 返回结果给用户
+    # 【核心修复】：不要直接返回 HTML！
+    # 将计算好的成绩作为参数，重定向到独立的 /success 页面
+    return redirect(url_for('success', name=name, score=score, correct_count=correct_count))
+
+# 【新增路由】：专门用来展示成功结果的独立页面
+@app.route('/success')
+def success():
+    # 从网址 (URL) 中提取刚才传过来的名字和成绩
+    name = request.args.get('name')
+    score = request.args.get('score')
+    correct_count = request.args.get('correct_count')
+    
     return f"""
     <div style="font-family: sans-serif; text-align: center; padding: 50px;">
         <h2 style="color: #0056b3;">提交成功！</h2>
@@ -55,8 +81,16 @@ def submit():
 
 @app.route('/admin')
 def admin():
-    # 返回电脑端后台管理页面
-    return render_template('admin.html', results=results_db)
+    current_data = load_data()
+    current_data.reverse() 
+    return render_template('admin.html', results=current_data)
+
+@app.route('/delete/<record_id>')
+def delete_record(record_id):
+    current_data = load_data()
+    updated_data = [item for item in current_data if item.get('id') != record_id]
+    save_data(updated_data)
+    return redirect(url_for('admin'))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
